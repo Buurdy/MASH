@@ -12,12 +12,6 @@ public class Reset : MonoBehaviour
         if (deathScreen.enabled == true) deathScreen.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

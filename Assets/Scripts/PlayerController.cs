@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         GetInput();
         Movement();
         ClampPlayerMovement();
+        if(Input.GetKeyDown(KeyCode.R)) Reset();
     }
     
     //Gets the players input
@@ -64,5 +66,10 @@ public class PlayerController : MonoBehaviour
         playerPos.y = Mathf.Clamp(playerPos.y, topBorder, bottomBorder);
         //Sets the players position
         transform.position = playerPos;
+    }
+
+    private void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
