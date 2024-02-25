@@ -10,6 +10,7 @@ public class Base : MonoBehaviour
     GameObject[] woundedSoldiers;
     TMP_Text returnedSoldiersText, soldiersHeldText;
     Canvas winScreen;
+    AudioSource returnSoldierAudio, winAudio;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class Base : MonoBehaviour
         soldiersHeldText = GameObject.Find("Soldiers Held Text").GetComponent <TMP_Text>();
         winScreen = GameObject.Find("Win Screen").GetComponent<Canvas>();
         if(winScreen.enabled == true) winScreen.enabled = false;
+        returnSoldierAudio = GameObject.Find("Return Soldier Audio").GetComponent<AudioSource>();
+        winAudio = GameObject.Find("Win Audio").GetComponent<AudioSource>();
 
         woundedSoldiers = GameObject.FindGameObjectsWithTag("WoundedSoldier");
         soldiersToRescue = woundedSoldiers.Length;
@@ -32,12 +35,14 @@ public class Base : MonoBehaviour
             player.carriedSoldiers = 0;
             returnedSoldiersText.text = "Returned Soldiers: " + returnedSoldiers;
             soldiersHeldText.text = "Soldiers Held: 0";
+            returnSoldierAudio.Play();
         }
 
         if(returnedSoldiers == soldiersToRescue)
         {
             winScreen.enabled = true;
             Destroy(player.gameObject);
+            winAudio.Play();
         }
     }
 }

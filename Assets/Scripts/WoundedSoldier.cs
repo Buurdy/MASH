@@ -7,11 +7,13 @@ public class WoundedSoldier : MonoBehaviour
 {
     PlayerController player;
     TMP_Text soldiersHeldText;
+    AudioSource pickupAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        pickupAudio = GameObject.Find("Pickup Audio").GetComponent<AudioSource>();
         soldiersHeldText = GameObject.Find("Soldiers Held Text").GetComponent<TMP_Text>();
     }
 
@@ -21,6 +23,7 @@ public class WoundedSoldier : MonoBehaviour
         {
             if (player.carriedSoldiers < 3)
             {
+                pickupAudio.Play();
                 Debug.Log("Picked up");
                 player.carriedSoldiers++;
                 Debug.Log(player.carriedSoldiers);
