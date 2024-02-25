@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WoundedSoldier : MonoBehaviour
 {
     PlayerController player;
+    TMP_Text soldiersHeldText;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        soldiersHeldText = GameObject.Find("Soldiers Held Text").GetComponent<TMP_Text>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +25,7 @@ public class WoundedSoldier : MonoBehaviour
                 player.carriedSoldiers++;
                 Debug.Log(player.carriedSoldiers);
                 Destroy(this.gameObject);
+                soldiersHeldText.text = "Soldiers Held: " + player.carriedSoldiers;
             }
         }   
     }
