@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
     {
         //Moves the player according to their input and the players move speed
         transform.position += movementVector.normalized * moveSpeed * Time.deltaTime;
+
+        if (xInput > 0) transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        else if(xInput < 0) transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+
     }
 
     void ClampPlayerMovement()
