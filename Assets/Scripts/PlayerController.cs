@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     Vector3 screenPos, playerPos;
     float leftBorder, rightBorder, topBorder, bottomBorder, distanceToCamera;
+    public int carriedSoldiers;
 
     // Start is called before the first frame update
     void Start()
