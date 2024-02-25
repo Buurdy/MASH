@@ -8,7 +8,7 @@ public class Base : MonoBehaviour
     PlayerController player;
     int returnedSoldiers, soldiersToRescue;
     GameObject[] woundedSoldiers;
-    TMP_Text returnedSoldiersText, soldiersHeldText;
+    TMP_Text returnedSoldiersText, soldiersHeldText, winTime;
     Canvas winScreen;
     AudioSource returnSoldierAudio, winAudio;
 
@@ -21,6 +21,7 @@ public class Base : MonoBehaviour
         if(winScreen.enabled == true) winScreen.enabled = false;
         returnSoldierAudio = GameObject.Find("Return Soldier Audio").GetComponent<AudioSource>();
         winAudio = GameObject.Find("Win Audio").GetComponent<AudioSource>();
+        winTime = GameObject.Find("Win Time").GetComponent<TMP_Text>();
 
         woundedSoldiers = GameObject.FindGameObjectsWithTag("WoundedSoldier");
         soldiersToRescue = woundedSoldiers.Length;
@@ -43,6 +44,7 @@ public class Base : MonoBehaviour
             winScreen.enabled = true;
             Destroy(player.gameObject);
             winAudio.Play();
+            winTime.text = "Your time was: " + Time.time + "s";
         }
     }
 }
