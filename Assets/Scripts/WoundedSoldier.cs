@@ -21,9 +21,9 @@ public class WoundedSoldier : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log("Picked up");
             if (player.carriedSoldiers < 3)
             {
+                Debug.Log("Picked up");
                 player.carriedSoldiers++;
                 Debug.Log(player.carriedSoldiers);
                 Destroy(this.gameObject);
